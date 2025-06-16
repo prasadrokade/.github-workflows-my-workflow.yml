@@ -1,0 +1,677 @@
+openapi: 3.0.3
+info:
+  description: |-
+    ## Developer quickstart
+
+    _Take your first step with GraphXServer.io API_
+
+    This API provides you a guide for product mockup and product line order generation endpoints.
+
+    You can use below support option in the left menu from GraphXServer.io site to submit any questions related to the API documentation.
+
+    <img src="https://content.pstmn.io/4f99f2e5-1850-434a-aed0-b5016fa1abad/U3VwcG9ydEZvcm0ucG5n" alt="Img%201.%20Support%20option">
+  title: Demo-GraphXServer.io API Documentation
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /api/Security/GetGraphXServerAPIToken:
+    post:
+      description: POST operation for /api/Security/GetGraphXServerAPIToken
+      operationId: apiSecurityGetGraphXServerAPITokenPOST
+      parameters:
+      - description: ""
+        explode: false
+        in: header
+        name: CompanyName
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: header
+        name: EndPointsUserName
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: header
+        name: EndPointsPassword
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get GraphXServer API key
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetProductMockupRequestExternal:
+    post:
+      description: POST operation for /api/ProductMockupRequest/GetProductMockupRequestExternal
+      operationId: apiProductMockupRequestGetProductMockupRequestExternalPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Create Product Mockup Request External
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetProductMockupRequestStatus:
+    post:
+      description: POST operation for /api/ProductMockupRequest/GetProductMockupRequestStatus
+      operationId: apiProductMockupRequestGetProductMockupRequestStatusPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              tObject:
+                CompanyName: Art_Cust1
+                MockupOrderNumber: MCKP-M9I4YLEA
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Product Mockup Request Status
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/CreateMockupOrderForMultipleViews:
+    post:
+      description: POST operation for /api/ProductMockupRequest/CreateMockupOrderForMultipleViews
+      operationId: apiProductMockupRequestCreateMockupOrderForMultipleViewsPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              tObject:
+                companyName: Art_Cust1
+                PONumber: PO12334
+                mockupRequestType: Standard
+                mockupOrderProduct:
+                  productPartID: 1-M0-TShirts-WH
+                  supplierID: 7
+                  mockupRequestOrderProductViews:
+                  - productViewID: 38
+                    mockupRequestOrderProductViewLocations:
+                    - locationName: Left Chest
+                      artURL: https://graphxserveriodemo.blob.core.windows.net/artcust1/Art_Cust1_0111202306_26_179364AM.png
+                      instructions: ""
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Create Product Mockup Request For Multiple Views
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetStatusForMultipleViewMockup:
+    post:
+      description: POST operation for /api/ProductMockupRequest/GetStatusForMultipleViewMockup
+      operationId: apiProductMockupRequestGetStatusForMultipleViewMockupPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Product Mockup Request Status For Multiple Views
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetSuppliersForCompany:
+    get:
+      description: GET operation for /api/ProductMockupRequest/GetSuppliersForCompany
+      operationId: apiProductMockupRequestGetSuppliersForCompanyGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: companyname
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get list of all the supplier for a company
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetProductListForCustomer:
+    get:
+      description: GET operation for /api/ProductMockupRequest/GetProductListForCustomer
+      operationId: apiProductMockupRequestGetProductListForCustomerGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: CustomerName
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: Page
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Products List
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetProductPartsByProductID:
+    post:
+      description: POST operation for /api/ProductMockupRequest/GetProductPartsByProductID
+      operationId: apiProductMockupRequestGetProductPartsByProductIDPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              tObject:
+                companyName: Art_Cust1
+                productID: 2-UN-Backpacks
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Product Parts By Product ID
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetProductViews:
+    get:
+      description: GET operation for /api/ProductMockupRequest/GetProductViews
+      operationId: apiProductMockupRequestGetProductViewsGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: CompanyName
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: ProductPartId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: supplierId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Product views
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetMappedSupplierLocationsForProduct:
+    get:
+      description: GET operation for /api/ProductMockupRequest/GetMappedSupplierLocationsForProduct
+      operationId: apiProductMockupRequestGetMappedSupplierLocationsForProductGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: companyname
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: ProductId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: supplierId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Mapped Supplier Locations For a Product
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductLine/GetAllProductLines:
+    get:
+      description: GET operation for /api/ProductLine/GetAllProductLines
+      operationId: apiProductLineGetAllProductLinesGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: customerName
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get All Product Lines
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetProductLineMockupRequestExternal:
+    post:
+      description: POST operation for /api/ProductMockupRequest/GetProductLineMockupRequestExternal
+      operationId: apiProductMockupRequestGetProductLineMockupRequestExternalPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Create Product Line Mockup Request - External
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetProductLineMockupRequestStatus:
+    post:
+      description: POST operation for /api/ProductMockupRequest/GetProductLineMockupRequestStatus
+      operationId: apiProductMockupRequestGetProductLineMockupRequestStatusPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              tObject:
+                CompanyName: Art_Cust1
+                ProductLineMockupOrderNumber: GRPL-LOMFZZ9H
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Product Line Mockup Request Status
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/PostAlertsForMockupOrder:
+    post:
+      description: POST operation for /api/ProductMockupRequest/PostAlertsForMockupOrder
+      operationId: apiProductMockupRequestPostAlertsForMockupOrderPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              tObject:
+                CompanyName: AK Enterprise
+                OutsourcedMockupOrderId: 88195
+                Subject: Testing from API - Mockup Order
+                Message: Test Message
+                AlertAttachmentFiles:
+                - AttachmentURL: https://graphxsourcestore.blob.core.windows.net/graphxsourcecontainer/graphxsource0210202211_57_286269PM.gif
+                  FileName: TestFile
+                  FileExtension: .gif
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Post Alert For Mockup Order
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/PostAlertsForTemplateOrder:
+    post:
+      description: POST operation for /api/ProductMockupRequest/PostAlertsForTemplateOrder
+      operationId: apiProductMockupRequestPostAlertsForTemplateOrderPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              tObject:
+                CompanyName: AK Enterprise
+                OutsourcedProductTemplateOrderId: 88196
+                Subject: Testing from API - Template Order
+                Message: "Test Message,"
+                AlertAttachmentFiles:
+                - AttachmentURL: https://graphxsourcestore.blob.core.windows.net/graphxsourcecontainer/graphxsource0210202211_57_286269PM.gif
+                  FileName: TestFile
+                  FileExtension: .gif
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Post Alerts For Template Order
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/PostAlertsForArtOrder:
+    post:
+      description: POST operation for /api/ProductMockupRequest/PostAlertsForArtOrder
+      operationId: apiProductMockupRequestPostAlertsForArtOrderPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              tObject:
+                CompanyName: AK Enterprise
+                OutsourcedArtOrderId: 88197
+                Subject: 'Testing from API- Art Order '
+                Message: Test message
+                AlertAttachmentFiles:
+                - AttachmentURL: https://graphxsourcestore.blob.core.windows.net/graphxsourcecontainer/graphxsource0210202211_57_286269PM.gif
+                  FileName: TestFile
+                  FileExtension: .gif
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Post Alerts For Art Order
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetAlertsForMockupOrder:
+    get:
+      description: GET operation for /api/ProductMockupRequest/GetAlertsForMockupOrder
+      operationId: apiProductMockupRequestGetAlertsForMockupOrderGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: CompanyName
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: OutsourcedMockupOrderId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Alerts For Mockup Order
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetAlertsForTemplateOrder:
+    get:
+      description: GET operation for /api/ProductMockupRequest/GetAlertsForTemplateOrder
+      operationId: apiProductMockupRequestGetAlertsForTemplateOrderGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: CompanyName
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: OutsourcedProductTemplateOrderId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Alerts For Template Order
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetAlertsForArtOrder:
+    get:
+      description: GET operation for /api/ProductMockupRequest/GetAlertsForArtOrder
+      operationId: apiProductMockupRequestGetAlertsForArtOrderGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: CompanyName
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: OutsourcedArtOrderId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Alerts For Art Order
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductMockupRequest/GetProductPartDetails:
+    get:
+      description: GET operation for /api/ProductMockupRequest/GetProductPartDetails
+      operationId: apiProductMockupRequestGetProductPartDetailsGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: CompanyName
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: ProductPartId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: supplierId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Product Part Details
+      x-eov-operation-handler: controllers/DefaultController
+  /api/Product/GetProductPartIDOnStyleNumber:
+    post:
+      description: POST operation for /api/Product/GetProductPartIDOnStyleNumber
+      operationId: apiProductGetProductPartIDOnStyleNumberPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              TObject:
+                styleNumber: "25528"
+                productColor: Stonewash
+                sizes:
+                - XS
+                - SM
+                - MD
+                supplierID: 58
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get ProductPartID On Style Number
+      x-eov-operation-handler: controllers/DefaultController
+  /api/EndPoint/GetProductMapStatusOnImageURL:
+    post:
+      description: POST operation for /api/EndPoint/GetProductMapStatusOnImageURL
+      operationId: apiEndPointGetProductMapStatusOnImageURLPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              tObject:
+                CompanyName: Art_Cust1
+                ImageUrl: https://cdnm.sanmar.com/imglib/mresjpg/2012/f14/548533_GameRoyal_Flat_Back.jpg
+                Supplier: Sanmar
+                ColorName: Game Royal/Wht
+                ProductId: "548533"
+                ClassTypeName: Rear
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get Product Map Status On Image URL
+      x-eov-operation-handler: controllers/DefaultController
+  /api/ProductLine/GetAllProductColors:
+    get:
+      description: GET operation for /api/ProductLine/GetAllProductColors
+      operationId: apiProductLineGetAllProductColorsGET
+      parameters:
+      - description: ""
+        explode: true
+        in: query
+        name: customerName
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful response
+      summary: Get all Product colors
+      x-eov-operation-handler: controllers/DefaultController
+components:
+  schemas: {}
+  securitySchemes: {}
